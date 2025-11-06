@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom"
 import { Flower2, BookOpen, Sunrise, Heart } from 'lucide-react';
 
 const Home: React.FC = () => {
+  const navigate = useNavigate()
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-lime-50 via-yellow-50 to-green-50 relative overflow-hidden">
       {/* Decorative Elements */}
@@ -42,7 +45,9 @@ const Home: React.FC = () => {
         </p>
 
         {/* CTA Button */}
-        <button className="group relative px-10 py-4 bg-gradient-to-r from-lime-400 to-yellow-400 text-gray-800 rounded-full text-lg font-medium shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 mb-16">
+        <button 
+          onClick={() => navigate("/diary")}
+          className="group relative px-10 py-4 bg-gradient-to-r from-lime-400 to-yellow-400 text-gray-800 rounded-full text-lg font-medium shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 mb-16">
           <span className="relative z-10 flex items-center gap-2">
             <BookOpen className="w-5 h-5" />
             기록하기
