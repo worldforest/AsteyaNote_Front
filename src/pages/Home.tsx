@@ -46,7 +46,7 @@ const Home: React.FC = () => {
 
         {/* CTA Button */}
         <button 
-          onClick={() => navigate("/diary")}
+          onClick={() => navigate("/journal")}
           className="group relative px-10 py-4 bg-gradient-to-r from-lime-400 to-yellow-400 text-gray-800 rounded-full text-lg font-medium shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 mb-16">
           <span className="relative z-10 flex items-center gap-2">
             <BookOpen className="w-5 h-5" />
