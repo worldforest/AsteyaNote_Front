@@ -14,7 +14,7 @@ const Home: React.FC = () => {
 
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-12">
-        
+
         {/* Logo/Icon */}
         <div className="mb-8 animate-float">
           <div className="relative">
@@ -28,9 +28,9 @@ const Home: React.FC = () => {
 
         {/* Main Title */}
         <h1 className="text-6xl md:text-7xl font-extralight text-gray-800 text-center mb-4 tracking-wide">
-          Asteya Note<br/>
+          Asteya Note<br />
         </h1>
-        
+
         <div className="flex items-center gap-3 mb-8">
           <div className="h-px w-12 bg-gradient-to-r from-transparent via-lime-400 to-transparent"></div>
           <p className="text-xl md:text-2xl text-gray-600 font-light italic">
@@ -41,23 +41,35 @@ const Home: React.FC = () => {
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-gray-600 text-center max-w-2xl mb-12 font-light leading-relaxed">
-          매일 분주하게 살아가며 <br/>스스로에게 소중한 것들에 소홀하지 않은가요?<br/>
+          매일 분주하게 살아가며 <br />스스로에게 소중한 것들에 소홀하지 않은가요?<br />
         </p>
 
         {/* CTA Button */}
-        <button 
-          onClick={() => navigate("/journal")}
-          className="group relative px-10 py-4 bg-gradient-to-r from-lime-400 to-yellow-400 text-gray-800 rounded-full text-lg font-medium shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 mb-16">
-          <span className="relative z-10 flex items-center gap-2">
-            <BookOpen className="w-5 h-5" />
-            기록하기
-          </span>
-          <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-lime-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </button>
+        <div className="flex flex-row items-center justify-center gap-4 mb-16">
+          <button
+            onClick={() => navigate("/journal")}
+            className="group relative px-10 py-4 bg-gradient-to-r from-lime-400 to-yellow-400 text-gray-800 rounded-full text-lg font-medium shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <span className="relative z-10 flex items-center gap-2">
+              <BookOpen className="w-5 h-5" />
+              기록하기
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-lime-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </button>
+
+          <button
+            onClick={() => navigate("/dosha")} // 경로가 다르다면 수정하세요
+            className="group relative px-10 py-4 bg-gradient-to-r from-lime-400 to-yellow-400 text-gray-800 rounded-full text-lg font-medium shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <span className="relative z-10 flex items-center gap-2">
+              <BookOpen className="w-5 h-5" />
+              도샤 찾기
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-lime-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </button>
+        </div>
 
         {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full">
-          
+
           {/* Card 1 */}
           <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-lime-100">
             <div className="bg-gradient-to-br from-lime-100 to-yellow-100 w-14 h-14 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -65,7 +77,7 @@ const Home: React.FC = () => {
             </div>
             <h3 className="text-xl font-medium text-gray-800 mb-3">나의 시간</h3>
             <p className="text-gray-600 font-light leading-relaxed">
-             과거의 후회나 남의 삶을 탐하며, '지금 여기'의 나에게 소홀히 했던 순간
+              과거의 후회나 남의 삶을 탐하며, '지금 여기'의 나에게 소홀히 했던 순간
             </p>
           </div>
 
@@ -95,7 +107,7 @@ const Home: React.FC = () => {
         {/* Bottom Quote */}
         <div className="mt-16 text-center">
           <p className="text-gray-500 font-light italic text-lg">
-            가장 진실한 나를 마주하고, <br/>소중한 것을 잃지 않기 위한 시간을 기록하세요.
+            가장 진실한 나를 마주하고, <br />소중한 것을 잃지 않기 위한 시간을 기록하세요.
           </p>
           {/* <p className="text-gray-400 text-sm mt-2">- 인도 속담</p> */}
         </div>

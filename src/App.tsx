@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import Header from './components/Header';
 import Home from './pages/Home';
 import JournalEntry from './pages/JournalEntry';
 import Dashboard from './pages/DashBoard';
+import Dosha from './pages/Dosha';
+import DoshaResultPage from './pages/DoshaResultPage';
+import YogaPoses from './pages/YogaPoses';
 
 const App: React.FC = () => {
   return (
@@ -15,6 +17,9 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/journal/" element={<JournalEntry />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dosha" element={<Dosha />} />
+          <Route path="/dosha/result" element={<DoshaResultPage />} />
+          <Route path="/yoga-poses" element={<YogaPoses />} />
         </Route>
       </Routes>
     </BrowserRouter>
