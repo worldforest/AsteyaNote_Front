@@ -1,16 +1,14 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { 
-  Calendar as CalendarIcon, 
-  TrendingUp, 
-  Award, 
+import {
+  Calendar as CalendarIcon,
+  TrendingUp,
+  Award,
   Heart,
   ChevronLeft,
   ChevronRight,
-  Filter,
-  BookOpen,
-  Target
+  BookOpen
 } from 'lucide-react';
 
 // 타입 정의
@@ -37,7 +35,6 @@ interface AsanaProgress {
 }
 
 type ViewMode = 'month' | 'studio' | 'asana';
-type FilterType = 'all' | 'studio' | 'teacher' | 'style';
 
 const Dashboard: React.FC = () => {
   // 샘플 데이터 (실제로는 API에서 가져올 데이터)
@@ -90,7 +87,6 @@ const Dashboard: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date(2025, 10, 1)); // 2025년 11월
   const [viewMode, setViewMode] = useState<ViewMode>('month');
   const [selectedEntry, setSelectedEntry] = useState<YogaEntry | null>(null);
-  const [filterType, setFilterType] = useState<FilterType>('all');
 
   // 통계 계산
   const stats = useMemo(() => {
@@ -99,8 +95,8 @@ const Dashboard: React.FC = () => {
     const avgSatisfaction = entries.reduce((sum, e) => sum + e.satisfaction, 0) / entries.length;
     const thisMonthSessions = entries.filter(e => {
       const entryDate = new Date(e.date);
-      return entryDate.getMonth() === currentDate.getMonth() && 
-             entryDate.getFullYear() === currentDate.getFullYear();
+      return entryDate.getMonth() === currentDate.getMonth() &&
+        entryDate.getFullYear() === currentDate.getFullYear();
     }).length;
 
     return {
@@ -115,7 +111,7 @@ const Dashboard: React.FC = () => {
   // 아사나별 진도율 계산
   const asanaProgress = useMemo(() => {
     const asanaMap = new Map<string, AsanaProgress>();
-    
+
     entries.forEach(entry => {
       entry.asanas.forEach(asana => {
         const existing = asanaMap.get(asana);
@@ -142,22 +138,22 @@ const Dashboard: React.FC = () => {
   const calendar = useMemo(() => {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
-    
+
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-    
+
     const days: (number | null)[] = [];
-    
+
     // 빈 칸 추가
     for (let i = 0; i < firstDay; i++) {
       days.push(null);
     }
-    
+
     // 날짜 추가
     for (let i = 1; i <= daysInMonth; i++) {
       days.push(i);
     }
-    
+
     return days;
   }, [currentDate]);
 
@@ -213,7 +209,7 @@ const Dashboard: React.FC = () => {
             <div className="text-3xl font-bold text-gray-800">{stats.thisMonthSessions}회</div>
             <div className="mt-2">
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
+                <div
                   className="bg-gradient-to-r from-green-400 to-lime-400 h-2 rounded-full transition-all"
                   style={{ width: `${Math.min(100, stats.progressRate)}%` }}
                 />
@@ -262,31 +258,28 @@ const Dashboard: React.FC = () => {
         <div className="flex gap-2 mb-6">
           <button
             onClick={() => setViewMode('month')}
-            className={`px-4 py-2 rounded-lg font-medium transition ${
-              viewMode === 'month'
-                ? 'bg-green-500 text-white'
-                : 'bg-white text-gray-600 hover:bg-gray-50'
-            }`}
+            className={`px-4 py-2 rounded-lg font-medium transition ${viewMode === 'month'
+              ? 'bg-green-500 text-white'
+              : 'bg-white text-gray-600 hover:bg-gray-50'
+              }`}
           >
             월별 보기
           </button>
           <button
             onClick={() => setViewMode('studio')}
-            className={`px-4 py-2 rounded-lg font-medium transition ${
-              viewMode === 'studio'
-                ? 'bg-green-500 text-white'
-                : 'bg-white text-gray-600 hover:bg-gray-50'
-            }`}
+            className={`px-4 py-2 rounded-lg font-medium transition ${viewMode === 'studio'
+              ? 'bg-green-500 text-white'
+              : 'bg-white text-gray-600 hover:bg-gray-50'
+              }`}
           >
             요가원별 보기
           </button>
           <button
             onClick={() => setViewMode('asana')}
-            className={`px-4 py-2 rounded-lg font-medium transition ${
-              viewMode === 'asana'
-                ? 'bg-green-500 text-white'
-                : 'bg-white text-gray-600 hover:bg-gray-50'
-            }`}
+            className={`px-4 py-2 rounded-lg font-medium transition ${viewMode === 'asana'
+              ? 'bg-green-500 text-white'
+              : 'bg-white text-gray-600 hover:bg-gray-50'
+              }`}
           >
             동작별 보기
           </button>
@@ -324,17 +317,16 @@ const Dashboard: React.FC = () => {
                       {day}
                     </div>
                   ))}
-                  
+
                   {calendar.map((day, index) => {
                     const dayEntries = day ? getEntriesForDate(day) : [];
                     const hasEntry = dayEntries.length > 0;
-                    
+
                     return (
                       <div
                         key={index}
-                        className={`aspect-square border rounded-lg p-2 ${
-                          day ? 'hover:bg-gray-50 cursor-pointer' : 'bg-gray-50'
-                        } ${hasEntry ? 'border-green-400 bg-green-50' : 'border-gray-200'}`}
+                        className={`aspect-square border rounded-lg p-2 ${day ? 'hover:bg-gray-50 cursor-pointer' : 'bg-gray-50'
+                          } ${hasEntry ? 'border-green-400 bg-green-50' : 'border-gray-200'}`}
                         onClick={() => day && hasEntry && setSelectedEntry(dayEntries[0])}
                       >
                         {day && (

@@ -6,8 +6,7 @@ import {
     doc,
     query,
     where,
-    Timestamp,
-    orderBy
+    Timestamp
 } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import type { UserYogaPose, YogaPose } from '../types/yogaPose';

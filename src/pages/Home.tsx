@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom"
-import { Flower2, BookOpen, Sunrise, Heart } from 'lucide-react';
+import { BookOpen, Sunrise, Heart } from 'lucide-react';
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
